@@ -1,18 +1,16 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import Link from "next/link";
+import { FormEvent, useState } from "react";
 
 type FormStatus = { type: "idle" | "loading" | "success" | "error"; message?: string };
+type JoinIntent = "fan" | "creator";
 
-export function ReserveForm() {
+export function ReserveForm({ initialIntent = "fan" }: { initialIntent?: JoinIntent }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [intent, setIntent] = useState<"fan" | "creator">("fan");
+  const [intent, setIntent] = useState<JoinIntent>(initialIntent);
   const [status, setStatus] = useState<FormStatus>({ type: "idle" });
-
-  useEffect(() => {
-    if (new URLSearchParams(window.location.search).get("type") === "creator") setIntent("creator");
-  }, []);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -32,7 +30,7 @@ export function ReserveForm() {
   }
 
   if (status.type === "success") {
-    return <div className="reservation-success" role="status"><span>EMAIL SENT</span><h2>One click<br />to make it yours.</h2><p>{status.message}</p><a href="/">Back to RHYME</a></div>;
+    return <div className="reservation-success" role="status"><span>EMAIL SENT</span><h2>One click<br />to make it yours.</h2><p>{status.message}</p><Link href="/">Back to RHYME</Link></div>;
   }
 
   return (

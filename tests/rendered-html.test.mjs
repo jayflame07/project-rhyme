@@ -1,19 +1,14 @@
 import assert from "node:assert/strict";
-import { access, readFile, readdir } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const developmentPreviewMeta =
-  /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
-const templateRoot = new URL("../", import.meta.url);
-const previewRoot = new URL("../app/_sites-preview/", import.meta.url);
-
-async function render() {
+async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
+  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${pathname}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${pathname}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -28,60 +23,42 @@ async function render() {
   );
 }
 
-test("server-renders the starter loading skeleton", async () => {
-  const response = await render();
+test("server-renders the RHYME homepage", async () => {
+  const response = await render("/");
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, developmentPreviewMeta);
-  assert.match(html, /<title>Your site is taking shape<\/title>/i);
-  assert.match(html, /Codex is working/);
-  assert.match(html, /Your site is taking shape/);
-  assert.match(html, /Codex is building the first version/);
-  assert.match(html, /react-loading-skeleton/);
-  assert.match(html, /role="status"/);
+  assert.match(html, /<title>RHYME/);
+  assert.match(html, /More than/);
+  assert.match(html, /Stream \u00b7 Learn \u00b7 Connect/);
+  assert.match(html, /Exclusive live sessions/);
+  assert.match(html, /Two ways to earn/);
+  assert.match(html, /No price has been announced yet/);
+  assert.match(html, /Reserve your username/);
+  assert.match(html, /<meta[^>]+name="robots"[^>]+content="noindex, nofollow"/i);
+  assert.doesNotMatch(html, /Your site is taking shape|Codex is working|react-loading-skeleton|codex-preview/i);
 });
 
-test("keeps the loading skeleton scoped and disposable", async () => {
-  const [preview, css, page, layout, packageJson, files] = await Promise.all([
-    readFile(new URL("SkeletonPreview.tsx", previewRoot), "utf8"),
-    readFile(new URL("preview.css", previewRoot), "utf8"),
-    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../package.json", import.meta.url), "utf8"),
-    readdir(previewRoot),
-  ]);
+test("server-renders the username reservation page", async () => {
+  const response = await render("/reserve");
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
-  assert.deepEqual(files.sort(), ["SkeletonPreview.tsx", "preview.css"]);
-  assert.match(preview, /from "react-loading-skeleton"/);
-  assert.match(preview, /baseColor="#eceae7"/);
-  assert.match(preview, /highlightColor="#f9f8f6"/);
-  assert.match(preview, /duration=\{2\.8\}/);
-  assert.match(preview, /sites-skeleton-search-placeholder/);
-  assert.match(packageJson, /"react-loading-skeleton": "3\.5\.0"/);
+  const html = await response.text();
+  assert.match(html, /Reserve your RHYME username/);
+  assert.match(html, /Claim the name/);
+  assert.match(html, /Choose your RHYME username/);
+  assert.match(html, /Music creator/);
+  assert.match(html, /Private preview: reservations activate after the Supabase database and email confirmation settings are connected/);
+  assert.doesNotMatch(html, /Your site is taking shape|Codex is working|react-loading-skeleton|codex-preview/i);
+});
 
-  const shellIndex = preview.indexOf('className="sites-skeleton-shell"');
-  const statusIndex = preview.indexOf('className="sites-skeleton-status"');
-  assert.ok(shellIndex >= 0 && statusIndex > shellIndex);
-  assert.match(css, /position:\s*fixed/);
-  assert.match(css, /inset:\s*0/);
-  assert.match(css, /opacity:\s*0\.52/);
-  assert.match(css, /prefers-reduced-motion:\s*reduce/);
-  assert.doesNotMatch(css, /#020617|canvas|pets|progress/i);
-  assert.doesNotMatch(
-    preview,
-    /loading-spinner|status-mark|status-progress|canvas|cookie|random/i,
-  );
+test("keeps Supabase credentials out of committed configuration", async () => {
+  const envExample = await readFile(new URL("../.env.example", import.meta.url), "utf8");
+  const packageJson = await readFile(new URL("../package.json", import.meta.url), "utf8");
 
-  assert.match(page, /export const metadata:\s*Metadata/);
-  assert.match(page, /"codex-preview": "development"/);
-  assert.match(page, /<SkeletonPreview \/>/);
-  assert.match(layout, /title:\s*"Starter Project"/);
-  assert.doesNotMatch(layout, /codex-preview|_sites-preview|themeColor|\bViewport\b/);
-  assert.doesNotMatch(css, /(^|\s)(html|body)\s*\{/m);
-
-  await assert.rejects(
-    access(new URL("public/_sites-preview", templateRoot)),
-  );
+  assert.match(envExample, /^SUPABASE_URL=$/m);
+  assert.match(envExample, /^SUPABASE_ANON_KEY=$/m);
+  assert.doesNotMatch(`${envExample}\n${packageJson}`, /service_role|SUPABASE_SERVICE/i);
 });

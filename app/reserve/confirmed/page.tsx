@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function ReservationConfirmedPage() {
@@ -29,5 +30,5 @@ export default function ReservationConfirmedPage() {
     void confirm();
   }, []);
 
-  return <main className="site confirmation-page"><div className="confirmation-card"><a className="wordmark" href="/">RHYME</a>{state.status === "loading" && <><span>CONFIRMING</span><h1>Holding<br />your name.</h1><p>We are verifying your email and reservation.</p></>}{state.status === "success" && <><span>RESERVED</span><h1>@{state.username}<br /><em>is yours.</em></h1><p>Your username is reserved for RHYME launch.</p><a className="outline-link" href="/">Return to RHYME {"\u2197"}</a></>}{state.status === "error" && <><span>NEEDS ATTENTION</span><h1>We could not<br />confirm it.</h1><p>{state.message}</p><a className="outline-link" href="/reserve">Try again {"\u2197"}</a></>}</div></main>;
+  return <main className="site confirmation-page"><div className="confirmation-card"><Link className="wordmark" href="/">RHYME</Link>{state.status === "loading" && <><span>CONFIRMING</span><h1>Holding<br />your name.</h1><p>We are verifying your email and reservation.</p></>}{state.status === "success" && <><span>RESERVED</span><h1>@{state.username}<br /><em>is yours.</em></h1><p>Your username is reserved for RHYME launch.</p><Link className="outline-link" href="/">Return to RHYME {"\u2197"}</Link></>}{state.status === "error" && <><span>NEEDS ATTENTION</span><h1>We could not<br />confirm it.</h1><p>{state.message}</p><Link className="outline-link" href="/reserve">Try again {"\u2197"}</Link></>}</div></main>;
 }
