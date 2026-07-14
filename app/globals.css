@@ -265,3 +265,74 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }
+
+/* Editorial scroll system for the RHYME homepage. */
+.site::before { content: ""; position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: calc(var(--scroll-progress, 0) * .32); background: linear-gradient(135deg, transparent 45%, rgba(111,255,223,.14), transparent 58%); mix-blend-mode: screen; }
+[data-reveal] { opacity: 0; transform: translateY(42px); transition: opacity .85s cubic-bezier(.2,.75,.2,1), transform .85s cubic-bezier(.2,.75,.2,1); }
+[data-reveal].is-revealed { opacity: 1; transform: none; }
+
+.scroll-reel { height: 300vh; position: relative; z-index: 2; background: #070713; }
+.reel-sticky { height: 100vh; position: sticky; top: 0; overflow: hidden; isolation: isolate; display: grid; place-items: center; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.reel-sticky::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(158,115,255,.3), transparent 32%), linear-gradient(130deg, #070713, #121326 48%, #150a1b); z-index: -2; }
+.reel-frame { position: absolute; overflow: hidden; width: min(52vw, 720px); aspect-ratio: .86; border: 1px solid rgba(255,255,255,.25); box-shadow: 0 45px 140px rgba(0,0,0,.55); transform-origin: center; }
+.reel-frame video { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.25) contrast(1.12); }
+.reel-frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(3,4,15,.55)); pointer-events: none; }
+.reel-frame-a { transform: translate(-30vw, 15vh) rotate(-10deg); }
+.reel-frame-b { transform: translate(27vw, -12vh) rotate(12deg); }
+.reel-frame-c { transform: translate(0, 5vh) rotate(2deg); }
+.reel-copy { position: absolute; z-index: 3; max-width: 660px; pointer-events: none; text-transform: uppercase; }
+.reel-copy span { display: block; margin-bottom: 1.4rem; color: var(--cyan); font-size: .58rem; letter-spacing: .22em; }
+.reel-copy strong { display: block; font-size: clamp(4rem, 9vw, 10rem); line-height: .74; letter-spacing: -.08em; }
+.reel-copy em { font-family: var(--editorial); font-weight: 400; text-transform: none; color: var(--pink); }
+.reel-copy-a { left: 7vw; top: 19vh; }
+.reel-copy-b { right: 7vw; bottom: 18vh; text-align: right; }
+.reel-copy-c { left: 50%; top: 50%; width: max-content; text-align: center; transform: translate(-50%, -50%); }
+.reel-counter { position: absolute; z-index: 3; bottom: 3vh; left: 3.5vw; right: 3.5vw; display: flex; justify-content: space-between; margin: 0; color: rgba(255,255,255,.55); font-size: .5rem; letter-spacing: .18em; }
+.reel-counter b { color: var(--cyan); font-weight: 500; }
+
+@supports (animation-timeline: view()) {
+  .scroll-reel { view-timeline-name: --rhyme-reel; view-timeline-axis: block; }
+  .reel-frame-a { animation: reel-a linear both; animation-timeline: --rhyme-reel; animation-range: entry 0% exit 100%; }
+  .reel-frame-b { animation: reel-b linear both; animation-timeline: --rhyme-reel; animation-range: entry 0% exit 100%; }
+  .reel-frame-c { animation: reel-c linear both; animation-timeline: --rhyme-reel; animation-range: entry 0% exit 100%; }
+  .reel-copy-a { animation: copy-a linear both; animation-timeline: --rhyme-reel; animation-range: entry 0% exit 100%; }
+  .reel-copy-b { animation: copy-b linear both; animation-timeline: --rhyme-reel; animation-range: entry 0% exit 100%; }
+  .reel-copy-c { animation: copy-c linear both; animation-timeline: --rhyme-reel; animation-range: entry 0% exit 100%; }
+}
+@keyframes reel-a { 0%, 28% { opacity: 1; transform: translate(-30vw, 15vh) rotate(-10deg) scale(.88); } 48%, 100% { opacity: 0; transform: translate(-46vw, 24vh) rotate(-18deg) scale(.68); } }
+@keyframes reel-b { 0%, 30% { opacity: 0; transform: translate(38vw, -20vh) rotate(18deg) scale(.7); } 50%, 72% { opacity: 1; transform: translate(27vw, -12vh) rotate(12deg) scale(.95); } 100% { opacity: 0; transform: translate(42vw, -28vh) rotate(23deg) scale(.72); } }
+@keyframes reel-c { 0%, 53% { opacity: 0; transform: translate(0, 15vh) rotate(-4deg) scale(.68); } 72%, 100% { opacity: 1; transform: translate(0, 5vh) rotate(2deg) scale(1); } }
+@keyframes copy-a { 0%, 26% { opacity: 1; transform: none; } 47%, 100% { opacity: 0; transform: translateY(-45px); } }
+@keyframes copy-b { 0%, 31% { opacity: 0; transform: translateY(45px); } 49%, 68% { opacity: 1; transform: none; } 85%, 100% { opacity: 0; transform: translateY(-35px); } }
+@keyframes copy-c { 0%, 57% { opacity: 0; transform: translate(-50%, calc(-50% + 45px)); } 75%, 100% { opacity: 1; transform: translate(-50%, -50%); } }
+
+@media (max-width: 900px) {
+  .scroll-reel { height: 185vh; }
+  .reel-frame { width: min(72vw, 510px); }
+  .reel-frame-a { transform: translate(-24vw, 16vh) rotate(-9deg); }
+  .reel-frame-b { transform: translate(23vw, -16vh) rotate(10deg); }
+  .reel-copy-a { left: 6vw; top: 16vh; }
+  .reel-copy-b { right: 6vw; bottom: 17vh; }
+}
+
+@media (max-width: 560px) {
+  [data-reveal] { opacity: 1; transform: none; }
+  .scroll-reel { height: 150vh; }
+  .reel-frame { width: 78vw; }
+  .reel-frame-a { transform: translate(-21vw, 19vh) rotate(-8deg); }
+  .reel-frame-b { transform: translate(18vw, -10vh) rotate(8deg); }
+  .reel-frame-c { transform: translate(0, 4vh) rotate(1deg); }
+  .reel-copy strong { font-size: clamp(3.6rem, 18vw, 6rem); }
+  .reel-copy-a { left: 6vw; top: 17vh; }
+  .reel-copy-b { right: 6vw; bottom: 15vh; }
+  .reel-counter { left: 5vw; right: 5vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site::before { display: none; }
+  .scroll-reel { height: auto; }
+  .reel-sticky { min-height: 100vh; height: auto; position: relative; padding: 7rem 0; }
+  .reel-frame, .reel-copy { position: relative; inset: auto; transform: none; opacity: 1; margin: 1rem auto; }
+  .reel-copy { width: min(86vw, 680px); text-align: left; }
+  .reel-copy-c { transform: none; }
+}
