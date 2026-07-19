@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 const title = "RHYME \u2014 Stream. Learn. Connect.";
-const description = "RHYME brings music streaming, learning, and community together, with intimate live sessions hosted by verified artists, DJs, producers, and music teachers.";
+const description = "RHYME is a music app for streaming songs, learning from creators, and joining limited live sessions with artists, DJs, producers, and music teachers.";
 
 export const metadata: Metadata = {
   title,

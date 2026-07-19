@@ -1,74 +1,55 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import { RhymeScrollEffects } from "./RhymeScrollEffects";
 
-type VariantId = "studio" | "pulse" | "circle";
-
-const variants: Array<{ id: VariantId; label: string; source: string }> = [
+const sessions = [
   {
-    id: "studio",
-    label: "Studio Rooms",
-    source: "21st: Music Portfolio + Neon Onyx + Magic Portfolio",
-  },
-  {
-    id: "pulse",
-    label: "Pulse Grid",
-    source: "21st: NeonFlow UI + Neon Magenta + Vertex",
-  },
-  {
-    id: "circle",
-    label: "Clover Circle",
-    source: "21st: Portfolio Gallery + Neon Clover + Folio",
-  },
-];
-
-const rooms = [
-  {
-    title: "Listening Room",
-    detail: "Album-first listening with artist notes, guest context, and the story behind the sound.",
+    label: "Guitar room",
+    title: "Learn the song from the person who plays it.",
+    detail: "Artists and talented music lovers can host small teaching sessions for guitar, vocals, writing, and live performance.",
     video: "/media/rhyme-1.mp4",
   },
   {
-    title: "Process Room",
-    detail: "Exclusive live sessions where verified artists, DJs, producers, and teachers open the work.",
+    label: "Beat lab",
+    title: "Watch a beat become a record.",
+    detail: "Producers can break down drums, samples, arrangements, and mix choices while followers ask questions in real time.",
     video: "/media/rhyme-2.mp4",
   },
   {
-    title: "People Room",
-    detail: "Small circles built around questions, taste, practice, and the listeners who keep showing up.",
+    label: "DJ trend room",
+    title: "DJs can turn taste into movement.",
+    detail: "DJs can connect with fans, test transitions, build trends, and invite a selected room into the energy behind a set.",
     video: "/media/rhyme-3.mp4",
   },
 ];
 
-const metrics = [
-  ["03", "core rooms"],
-  ["1:1", "artist presence"],
-  ["2026", "private launch"],
+const steps = [
+  ["Stream", "Listen to songs from various artists with the everyday ease people expect from a modern music app."],
+  ["Learn", "Join creator-led sessions to learn music skills: guitar, production, DJing, songwriting, and more."],
+  ["Connect", "Enter limited live rooms where artists can see and speak with selected fans, not just broadcast at them."],
 ];
 
-const pulseCards = [
-  ["Now live", "Track-by-track listening room", "A release playback with the artist answering questions between songs."],
-  ["Workshop", "808 texture lab", "A producer breaks down drums, samples, and mix decisions in real time."],
-  ["Open table", "DJ context session", "A small group follows the records, references, and scenes behind a set."],
+const creatorPaths = [
+  ["Paid sessions", "Verified artists, DJs, producers, and teachers can charge a small fee for premium live rooms."],
+  ["Subscription share", "RHYME can pay creators from platform subscriptions as their audience streams, learns, and returns."],
+  ["Fan growth", "Creator pages become a home for songs, sessions, teaching, live calls, and trend-building."],
 ];
 
-const circleSteps = [
-  ["Pick your room", "Choose listening, process, or people-first spaces based on how close you want to get."],
-  ["Meet the process", "Join small live sessions, ask better questions, and keep the notes that matter."],
-  ["Keep your name", "Reserve the username people will use to find you when RHYME opens."],
+const faq = [
+  ["Is RHYME only for famous artists?", "No. RHYME is for established artists, DJs, producers, music teachers, and talented music lovers who can teach or create music-related sessions."],
+  ["How are live rooms different from going live?", "Rooms are intentionally limited. The creator can see selected people in the live call, answer questions, and make the session feel closer than a public livestream."],
+  ["How do creators get paid?", "Verified creators can charge small session fees, earn from subscribers who join premium rooms, and receive platform payouts from RHYME."],
+  ["Is the app mobile only?", "The goal is phone and PC access, so listeners can stream casually and still join deeper learning sessions when they want a bigger screen."],
 ];
 
 export function RhymeVariantShowcase() {
-  const [active, setActive] = useState<VariantId>("studio");
-  const current = variants.find((variant) => variant.id === active) ?? variants[0];
-
   return (
-    <main className={`upgrade-page upgrade-${active}`}>
+    <main className="upgrade-page upgrade-pulse pulse-home">
       <RhymeScrollEffects />
       <div className="upgrade-grain" aria-hidden="true" />
-      <nav className="upgrade-nav" aria-label="RHYME">
+
+      <nav className="upgrade-nav pulse-home-nav" aria-label="RHYME">
         <Link className="upgrade-wordmark" href="/">
           <img src="/media/rhyme-prism-clef.png" alt="" />
           RHYME
@@ -78,275 +59,165 @@ export function RhymeVariantShowcase() {
           Reserve your username
         </Link>
       </nav>
-      <div className="upgrade-switcher" aria-label="Choose RHYME page variation">
-        {variants.map((variant, index) => (
-          <button
-            aria-pressed={variant.id === active}
-            className={variant.id === active ? "is-active" : ""}
-            key={variant.id}
-            onClick={() => setActive(variant.id)}
-            type="button"
-          >
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            {variant.label}
-          </button>
-        ))}
-      </div>
-      <p className="upgrade-source">{current.source}</p>
-      <div hidden={active !== "studio"}>
-        <StudioVariant />
-      </div>
-      <div hidden={active !== "pulse"}>
-        <PulseVariant />
-      </div>
-      <div hidden={active !== "circle"}>
-        <CircleVariant />
-      </div>
-    </main>
-  );
-}
 
-function StudioVariant() {
-  return (
-    <>
-      <section className="studio-hero" id="top">
-        <div className="studio-copy" data-reveal>
-          <p className="upgrade-kicker">Private pre-launch / Music, nearer</p>
-          <h1>
-            More than
-            <span> streaming.</span>
-          </h1>
+      <section className="pulse-hero pulse-home-hero">
+        <div className="pulse-copy" data-reveal>
+          <p className="upgrade-kicker">Streaming plus music school plus fan rooms</p>
+          <h1>More than streaming.</h1>
           <p>
-            RHYME is a place to stay close to the music: the track, the process,
-            the room, and the people who care enough to listen past the first play.
+            RHYME is a music app for people who do more than press play. Stream
+            songs from artists you love, then step into limited live sessions
+            where artists, DJs, producers, teachers, and talented music lovers
+            teach, create, and connect with their followers.
           </p>
           <div className="upgrade-actions">
             <Link className="upgrade-primary" href="/reserve">
               Reserve your username <b>+</b>
             </Link>
             <Link className="upgrade-secondary" href="/reserve?type=creator">
-              I make music
+              Join as a creator
             </Link>
           </div>
         </div>
-        <div className="studio-stage" aria-label="RHYME music rooms">
-          <video src="/media/rhyme-4.mp4" autoPlay muted loop playsInline />
-          <img src="/media/rhyme-prism-clef.png" alt="" />
-          <div>
-            <span>LIVE</span>
-            <strong>Exclusive live sessions</strong>
-          </div>
-        </div>
-        <div className="studio-metrics">
-          {metrics.map(([value, label]) => (
-            <span key={label}>
-              <b>{value}</b>
-              {label}
-            </span>
-          ))}
-        </div>
-      </section>
-      <section className="studio-rooms" data-reveal>
-        {rooms.map((room, index) => (
-          <article key={room.title}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <video src={room.video} autoPlay muted loop playsInline />
-            <h2>{room.title}</h2>
-            <p>{room.detail}</p>
-          </article>
-        ))}
-      </section>
-      <section className="studio-earn" data-reveal>
-        <p className="upgrade-kicker">Two ways to earn</p>
-        <h2>Open the room. Keep the relationship.</h2>
-        <p>
-          Creators can earn from hosted sessions and from the community around the
-          music they make, teach, test, and release.
-        </p>
-        <small>No price has been announced yet. Username reservations activate when launch systems are connected.</small>
-      </section>
-    </>
-  );
-}
-
-function PulseVariant() {
-  return (
-    <>
-      <section className="pulse-hero">
-        <div className="pulse-copy" data-reveal>
-          <p className="upgrade-kicker">RHYME signal desk</p>
-          <h1>
-            The night moves through the room.
-          </h1>
-          <p>
-            A modular landing direction for RHYME: vivid, fast, and built around
-            sessions that feel alive before the user even signs up.
-          </p>
-          <Link className="upgrade-primary" href="/reserve">
-            Reserve your username <b>+</b>
-          </Link>
-        </div>
-        <div className="pulse-board" aria-label="RHYME session dashboard">
+        <div className="pulse-board pulse-home-board" aria-label="RHYME app preview">
           <article className="pulse-now">
-            <video src="/media/rhyme-1.mp4" autoPlay muted loop playsInline />
-            <span>Tonight</span>
-            <h2>Producer room opens in 14 min</h2>
+            <video src="/media/rhyme-4.mp4" autoPlay muted loop playsInline />
+            <span>Live soon</span>
+            <h2>Beat session opens to 24 fans</h2>
           </article>
           <article>
-            <span>Signal</span>
-            <strong>84%</strong>
-            <p>Listener presence across small rooms.</p>
+            <span>App model</span>
+            <strong>3-in-1</strong>
+            <p>Streaming, learning sessions, and closer fan connection in one place.</p>
           </article>
           <article>
-            <span>Drop notes</span>
-            <p>Ask the artist what changed between demo three and the final mix.</p>
+            <span>Creator access</span>
+            <p>Verified accounts can host premium rooms with a small join fee.</p>
           </article>
           <article>
-            <span>Creator lane</span>
-            <p>Artists, DJs, producers, and teachers can host, teach, and earn.</p>
+            <span>Fan experience</span>
+            <p>Follow artists, stream music, learn skills, and join selected live calls.</p>
           </article>
         </div>
       </section>
+
+      <section className="pulse-product" data-reveal>
+        <div>
+          <p className="upgrade-kicker">The product idea</p>
+          <h2>Spotify-like listening, with a school and stage built in.</h2>
+        </div>
+        <p>
+          RHYME starts with music streaming, then adds the layer listeners do not
+          get from normal platforms: direct access to how music is made. A fan can
+          listen to a track, join a guitar lesson from the artist, watch a producer
+          build a beat, or enter a DJ room that helps create the next trend.
+        </p>
+      </section>
+
       <section className="pulse-sessions" data-reveal>
         <div>
           <p className="upgrade-kicker">Exclusive live sessions</p>
-          <h2>Every card is a room you can enter.</h2>
+          <h2>Every session is a small room, not a crowded livestream.</h2>
         </div>
         <div className="pulse-session-stack">
-          {pulseCards.map(([label, title, detail], index) => (
+          {sessions.map((session) => (
+            <article key={session.title}>
+              <video src={session.video} autoPlay muted loop playsInline />
+              <span>{session.label}</span>
+              <h3>{session.title}</h3>
+              <p>{session.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="pulse-grid pulse-feature-grid" data-reveal>
+        {[
+          ["Listeners", "Stream songs, follow creators, learn music skills, and get closer to the people behind the sound."],
+          ["Artists", "Release music, host intimate live calls, teach followers, and build a paying community."],
+          ["DJs", "Connect with fans, test sets, start trends, and bring selected listeners inside the room."],
+          ["Teachers", "Turn talent into mobile and PC sessions for guitar, production, vocals, songwriting, and more."],
+        ].map(([title, detail], index) => (
+          <article key={title}>
+            <span>0{index + 1}</span>
+            <h2>{title}</h2>
+            <p>{detail}</p>
+          </article>
+        ))}
+      </section>
+
+      <section className="pulse-path" data-reveal>
+        {steps.map(([title, detail], index) => (
+          <div key={title}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <h2>{title}</h2>
+            <p>{detail}</p>
+          </div>
+        ))}
+      </section>
+
+      <section className="pulse-economy" data-reveal>
+        <div>
+          <p className="upgrade-kicker">Two ways to earn</p>
+          <h2>Creators get paid by the room and by the platform.</h2>
+          <p>
+            RHYME can work with a subscription like Spotify, while verified
+            creators can also charge small fees for special live sessions. That
+            gives creators a reason to teach, show up, and build stronger fan
+            relationships.
+          </p>
+          <Link className="upgrade-primary" href="/reserve?type=creator">
+            Reserve a creator name <b>+</b>
+          </Link>
+        </div>
+        <div className="pulse-earning-list">
+          {creatorPaths.map(([title, detail], index) => (
             <article key={title}>
-              <video src={rooms[index].video} autoPlay muted loop playsInline />
-              <span>{label}</span>
+              <span>{String(index + 1).padStart(2, "0")}</span>
               <h3>{title}</h3>
               <p>{detail}</p>
             </article>
           ))}
         </div>
       </section>
-      <section className="pulse-grid" data-reveal>
-        {["Stream deeper", "Learn in public", "Connect in small rooms", "Build your name"].map((item, index) => (
-          <article key={item}>
-            <span>0{index + 1}</span>
-            <h2>{item}</h2>
-            <p>{index === 3 ? "Reserve the username people will use to find you at launch." : "Each path brings the artist, listener, and process closer together."}</p>
-          </article>
-        ))}
-      </section>
-      <section className="pulse-path" data-reveal>
-        <div>
-          <span>01</span>
-          <h2>Listen</h2>
-          <p>Start with the track, the release, or the room already moving.</p>
-        </div>
-        <div>
-          <span>02</span>
-          <h2>Learn</h2>
-          <p>Follow the decision-making: what changed, what stayed, and why it works.</p>
-        </div>
-        <div>
-          <span>03</span>
-          <h2>Connect</h2>
-          <p>Keep your identity, your notes, and the people you want to hear from again.</p>
-        </div>
-      </section>
-      <section className="pulse-closing" data-reveal>
+
+      <section className="pulse-access" data-reveal>
         <video src="/media/rhyme-2.mp4" autoPlay muted loop playsInline />
         <div>
-          <p className="upgrade-kicker">Two ways to earn</p>
-          <h2>Session income. Community gravity.</h2>
+          <p className="upgrade-kicker">Verified creator rooms</p>
+          <h2>Small enough for the artist to actually see who is there.</h2>
           <p>
-            Creators earn from the rooms they host and the loyal listener circles
-            that form around their releases, lessons, sets, and experiments.
+            Public livestreams can feel distant. RHYME rooms are designed for
+            selected fans, paid access when appropriate, and real interaction:
+            questions, feedback, learning, and face-to-face presence.
           </p>
-          <Link className="upgrade-secondary" href="/reserve?type=creator">
-            Start as a creator
-          </Link>
-          <small>No price has been announced yet. Reservations activate once RHYME&apos;s launch systems are connected.</small>
         </div>
       </section>
-    </>
-  );
-}
 
-function CircleVariant() {
-  return (
-    <>
-      <section className="circle-hero">
-        <div className="circle-media" aria-hidden="true">
-          {rooms.map((room) => (
-            <video key={room.title} src={room.video} autoPlay muted loop playsInline />
-          ))}
-        </div>
-        <div className="circle-copy" data-reveal>
-          <p className="upgrade-kicker">A softer room for serious listeners</p>
-          <h1>
-            Come closer to what the song is made of.
-          </h1>
-          <p>
-            RHYME gathers listening, learning, artist-led rooms, and identity into
-            a calm community page that feels open without becoming ordinary.
-          </p>
-          <div className="upgrade-actions">
-            <Link className="upgrade-primary" href="/reserve">
-              Reserve your username <b>+</b>
-            </Link>
-            <Link className="upgrade-secondary" href="#circle-steps">
-              See the path
-            </Link>
-          </div>
-        </div>
-      </section>
-      <section className="circle-steps" id="circle-steps" data-reveal>
-        {circleSteps.map(([step, detail], index) => (
-          <article key={step}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <h2>{step}</h2>
-            <p>{detail}</p>
-          </article>
-        ))}
-      </section>
-      <section className="circle-sessions" data-reveal>
+      <section className="pulse-faq" data-reveal>
         <div>
-          <p className="upgrade-kicker">Exclusive live sessions</p>
-          <h2>Quiet rooms. Real presence.</h2>
-          <p>
-            This variation treats RHYME like a listening salon: less dashboard,
-            more depth, with intimate rooms for people who want the artist and
-            the process to stay close.
-          </p>
+          <p className="upgrade-kicker">Launch clarity</p>
+          <h2>What RHYME is becoming.</h2>
         </div>
-        <div className="circle-room-list">
-          {rooms.map((room, index) => (
-            <article key={room.title}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <h3>{room.title}</h3>
-              <p>{room.detail}</p>
-            </article>
+        <div className="pulse-faq-list">
+          {faq.map(([question, answer]) => (
+            <details key={question}>
+              <summary>{question}<b>+</b></summary>
+              <p>{answer}</p>
+            </details>
           ))}
         </div>
       </section>
-      <section className="circle-earning" data-reveal>
-        <video src="/media/rhyme-4.mp4" autoPlay muted loop playsInline />
-        <div>
-          <p className="upgrade-kicker">Two ways to earn</p>
-          <h2>Host the room, then grow what gathers around it.</h2>
-          <p>
-            Artists, DJs, producers, and music teachers can earn through hosted
-            sessions while building a community that follows the work over time.
-          </p>
-        </div>
-      </section>
-      <section className="circle-final" data-reveal>
+
+      <section className="pulse-final" data-reveal>
         <img src="/media/rhyme-prism-clef.png" alt="RHYME prism clef" />
-        <div>
-          <p className="upgrade-kicker">Private pre-launch</p>
-          <h2>Start with the name they will know.</h2>
-          <Link className="upgrade-primary" href="/reserve">
-            Reserve your username <b>+</b>
-          </Link>
-          <small>No price has been announced yet. Username reservations activate after launch systems are connected.</small>
-        </div>
+        <p className="upgrade-kicker">Private pre-launch / 2026</p>
+        <h2>Start with the name your fans will know.</h2>
+        <Link className="upgrade-primary" href="/reserve">
+          Reserve your username <b>+</b>
+        </Link>
+        <small>No price has been announced yet. Reservations activate once RHYME&apos;s launch systems are connected.</small>
       </section>
-    </>
+    </main>
   );
 }
