@@ -48,6 +48,18 @@ const metrics = [
   ["2026", "private launch"],
 ];
 
+const pulseCards = [
+  ["Now live", "Track-by-track listening room", "A release playback with the artist answering questions between songs."],
+  ["Workshop", "808 texture lab", "A producer breaks down drums, samples, and mix decisions in real time."],
+  ["Open table", "DJ context session", "A small group follows the records, references, and scenes behind a set."],
+];
+
+const circleSteps = [
+  ["Pick your room", "Choose listening, process, or people-first spaces based on how close you want to get."],
+  ["Meet the process", "Join small live sessions, ask better questions, and keep the notes that matter."],
+  ["Keep your name", "Reserve the username people will use to find you when RHYME opens."],
+];
+
 export function RhymeVariantShowcase() {
   const [active, setActive] = useState<VariantId>("studio");
   const current = variants.find((variant) => variant.id === active) ?? variants[0];
@@ -81,9 +93,15 @@ export function RhymeVariantShowcase() {
         ))}
       </div>
       <p className="upgrade-source">{current.source}</p>
-      {active === "studio" && <StudioVariant />}
-      {active === "pulse" && <PulseVariant />}
-      {active === "circle" && <CircleVariant />}
+      <div hidden={active !== "studio"}>
+        <StudioVariant />
+      </div>
+      <div hidden={active !== "pulse"}>
+        <PulseVariant />
+      </div>
+      <div hidden={active !== "circle"}>
+        <CircleVariant />
+      </div>
     </main>
   );
 }
@@ -189,6 +207,22 @@ function PulseVariant() {
           </article>
         </div>
       </section>
+      <section className="pulse-sessions" data-reveal>
+        <div>
+          <p className="upgrade-kicker">Exclusive live sessions</p>
+          <h2>Every card is a room you can enter.</h2>
+        </div>
+        <div className="pulse-session-stack">
+          {pulseCards.map(([label, title, detail], index) => (
+            <article key={title}>
+              <video src={rooms[index].video} autoPlay muted loop playsInline />
+              <span>{label}</span>
+              <h3>{title}</h3>
+              <p>{detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
       <section className="pulse-grid" data-reveal>
         {["Stream deeper", "Learn in public", "Connect in small rooms", "Build your name"].map((item, index) => (
           <article key={item}>
@@ -198,14 +232,36 @@ function PulseVariant() {
           </article>
         ))}
       </section>
+      <section className="pulse-path" data-reveal>
+        <div>
+          <span>01</span>
+          <h2>Listen</h2>
+          <p>Start with the track, the release, or the room already moving.</p>
+        </div>
+        <div>
+          <span>02</span>
+          <h2>Learn</h2>
+          <p>Follow the decision-making: what changed, what stayed, and why it works.</p>
+        </div>
+        <div>
+          <span>03</span>
+          <h2>Connect</h2>
+          <p>Keep your identity, your notes, and the people you want to hear from again.</p>
+        </div>
+      </section>
       <section className="pulse-closing" data-reveal>
         <video src="/media/rhyme-2.mp4" autoPlay muted loop playsInline />
         <div>
           <p className="upgrade-kicker">Two ways to earn</p>
           <h2>Session income. Community gravity.</h2>
+          <p>
+            Creators earn from the rooms they host and the loyal listener circles
+            that form around their releases, lessons, sets, and experiments.
+          </p>
           <Link className="upgrade-secondary" href="/reserve?type=creator">
             Start as a creator
           </Link>
+          <small>No price has been announced yet. Reservations activate once RHYME&apos;s launch systems are connected.</small>
         </div>
       </section>
     </>
@@ -241,13 +297,44 @@ function CircleVariant() {
         </div>
       </section>
       <section className="circle-steps" id="circle-steps" data-reveal>
-        {["Pick your room", "Meet the process", "Keep your name"].map((step, index) => (
+        {circleSteps.map(([step, detail], index) => (
           <article key={step}>
             <span>{String(index + 1).padStart(2, "0")}</span>
             <h2>{step}</h2>
-            <p>{index === 2 ? "Your RHYME username becomes the anchor for launch." : "Follow the music through sessions, notes, and community conversation."}</p>
+            <p>{detail}</p>
           </article>
         ))}
+      </section>
+      <section className="circle-sessions" data-reveal>
+        <div>
+          <p className="upgrade-kicker">Exclusive live sessions</p>
+          <h2>Quiet rooms. Real presence.</h2>
+          <p>
+            This variation treats RHYME like a listening salon: less dashboard,
+            more depth, with intimate rooms for people who want the artist and
+            the process to stay close.
+          </p>
+        </div>
+        <div className="circle-room-list">
+          {rooms.map((room, index) => (
+            <article key={room.title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{room.title}</h3>
+              <p>{room.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="circle-earning" data-reveal>
+        <video src="/media/rhyme-4.mp4" autoPlay muted loop playsInline />
+        <div>
+          <p className="upgrade-kicker">Two ways to earn</p>
+          <h2>Host the room, then grow what gathers around it.</h2>
+          <p>
+            Artists, DJs, producers, and music teachers can earn through hosted
+            sessions while building a community that follows the work over time.
+          </p>
+        </div>
       </section>
       <section className="circle-final" data-reveal>
         <img src="/media/rhyme-prism-clef.png" alt="RHYME prism clef" />
@@ -257,6 +344,7 @@ function CircleVariant() {
           <Link className="upgrade-primary" href="/reserve">
             Reserve your username <b>+</b>
           </Link>
+          <small>No price has been announced yet. Username reservations activate after launch systems are connected.</small>
         </div>
       </section>
     </>
