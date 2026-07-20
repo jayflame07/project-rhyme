@@ -496,13 +496,27 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   color: var(--variant-accent);
 }
 
+.upgrade-switcher button b {
+  padding: .18rem .36rem;
+  border-radius: 5px;
+  background: rgba(255,255,255,.12);
+  color: rgba(255,255,255,.78);
+  font-size: .56rem;
+  font-weight: 700;
+}
+
 .upgrade-switcher button.is-active {
   background: var(--variant-accent);
   color: var(--variant-on-accent);
 }
 
-.upgrade-switcher button.is-active span {
+.upgrade-switcher button.is-active span,
+.upgrade-switcher button.is-active b {
   color: currentColor;
+}
+
+.upgrade-switcher button.is-active b {
+  background: rgba(0,0,0,.14);
 }
 
 .upgrade-switcher button:focus-visible,
@@ -566,6 +580,389 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
 .upgrade-kicker {
   margin: 0 0 1rem;
   color: var(--variant-accent);
+}
+
+.rhyme-theme-page {
+  --variant-accent: #19f7ff;
+  --variant-on-accent: #020408;
+  background: #020207;
+}
+
+.rhyme-theme-page.rhyme-theme-aurora {
+  --variant-accent: #fff36d;
+  --variant-on-accent: #06050a;
+}
+
+.rhyme-theme-page.rhyme-theme-wave {
+  --variant-accent: #18ff6d;
+  --variant-on-accent: #020704;
+}
+
+.rhyme-theme-page.rhyme-theme-prism {
+  --variant-accent: #ff3dce;
+  --variant-on-accent: #09010a;
+}
+
+.rhyme-hero-switch {
+  min-height: 100svh;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+  padding: 120px 4vw 110px;
+  border-bottom: 1px solid rgba(255,255,255,.14);
+  background: #020207;
+}
+
+.rhyme-hero-switch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.52) 58%, rgba(0,0,0,.82)),
+    repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 26px);
+}
+
+.rhyme-hero-switch h1 {
+  margin: 0;
+  max-width: 1040px;
+  font-size: clamp(4rem, 9.4vw, 11rem);
+  line-height: .82;
+  font-weight: 830;
+  text-transform: uppercase;
+}
+
+.rhyme-hero-switch p:not(.upgrade-kicker) {
+  max-width: 650px;
+  margin: 1.35rem 0 2rem;
+  color: rgba(255,255,255,.72);
+  font-size: clamp(.98rem, 1.18vw, 1.16rem);
+  line-height: 1.7;
+}
+
+.rhyme-shader-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #000;
+}
+
+.rhyme-hero-aurora {
+  grid-template-columns: 1fr minmax(260px, 380px);
+  gap: 5vw;
+  background:
+    radial-gradient(circle at 35% 46%, rgba(0,229,255,.16), transparent 30%),
+    linear-gradient(135deg, #050505, #101014 46%, #050505);
+}
+
+.rhyme-aurora-field {
+  position: absolute;
+  inset: -12%;
+  z-index: -3;
+  overflow: hidden;
+  transform: rotate(-10deg);
+}
+
+.rhyme-aurora-field i {
+  position: absolute;
+  width: 86vw;
+  height: 14vh;
+  left: 12vw;
+  top: 8vh;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, #ff7c3b 14%, #fff36d 27%, #73fff1 43%, #245cff 58%, #ffffff 72%, #ff8a43 84%, transparent);
+  filter: blur(7px) saturate(1.6);
+  mix-blend-mode: screen;
+  opacity: .9;
+  animation: rhymeAuroraSweep 12s ease-in-out infinite alternate;
+}
+
+.rhyme-aurora-field i:nth-child(2) {
+  top: 20vh;
+  left: 1vw;
+  height: 11vh;
+  opacity: .62;
+  animation-duration: 15s;
+}
+
+.rhyme-aurora-field i:nth-child(3) {
+  top: 38vh;
+  left: 30vw;
+  height: 17vh;
+  opacity: .56;
+  animation-duration: 18s;
+}
+
+.rhyme-aurora-field i:nth-child(4) {
+  inset: -8% auto auto 42vw;
+  width: 46vw;
+  height: 120vh;
+  transform: rotate(28deg);
+  opacity: .28;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 26px, rgba(0,0,0,.75) 27px 54px);
+  filter: none;
+  mix-blend-mode: overlay;
+}
+
+.rhyme-aurora-content,
+.rhyme-wave-content,
+.rhyme-prism-content {
+  position: relative;
+  z-index: 2;
+}
+
+.rhyme-aurora-panel {
+  min-height: 410px;
+  position: relative;
+  z-index: 2;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 8px;
+  background: rgba(255,255,255,.045);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 28px 80px rgba(0,0,0,.4);
+}
+
+.rhyme-aurora-panel::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background:
+    conic-gradient(from 60deg, transparent 0 15%, rgba(255,124,59,.5), transparent 32% 48%, rgba(25,247,255,.45), transparent 62% 78%, rgba(255,243,109,.46), transparent);
+  filter: blur(28px);
+  animation: pulseAuroraSpin 16s linear infinite;
+}
+
+.rhyme-aurora-panel span,
+.rhyme-aurora-panel strong,
+.rhyme-aurora-panel p {
+  position: relative;
+  z-index: 1;
+}
+
+.rhyme-aurora-panel span,
+.rhyme-wave-status span {
+  color: var(--variant-accent);
+  font-size: .72rem;
+  text-transform: uppercase;
+}
+
+.rhyme-aurora-panel strong {
+  font-size: clamp(2.8rem, 5.8vw, 5.5rem);
+  line-height: .86;
+}
+
+.rhyme-aurora-panel p {
+  max-width: 280px;
+  color: rgba(255,255,255,.68);
+}
+
+.rhyme-hero-wave {
+  place-items: center;
+  text-align: center;
+  background: #010102;
+}
+
+.rhyme-ripple-shader {
+  opacity: .88;
+  filter: saturate(1.25) contrast(1.12);
+}
+
+.rhyme-wave-field {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: .8;
+}
+
+.rhyme-wave-field i {
+  position: absolute;
+  left: -14vw;
+  right: -14vw;
+  top: 58%;
+  height: 9px;
+  border-radius: 999px;
+  filter: blur(11px);
+  transform: rotate(-4deg);
+  background: #fff;
+  box-shadow: 0 0 30px #fff, 0 0 58px #19f7ff;
+  animation: rhymeWaveFloat 7s ease-in-out infinite alternate;
+}
+
+.rhyme-wave-field i:nth-child(2) {
+  top: 62%;
+  background: #18ff6d;
+  box-shadow: 0 0 26px #18ff6d, 0 0 62px #18ff6d;
+  animation-delay: -1.7s;
+}
+
+.rhyme-wave-field i:nth-child(3) {
+  top: 55%;
+  background: #214eff;
+  box-shadow: 0 0 24px #214eff, 0 0 70px #214eff;
+  animation-delay: -3.2s;
+}
+
+.rhyme-wave-content {
+  width: min(100%, 980px);
+  display: grid;
+  justify-items: center;
+}
+
+.rhyme-wave-content h1 {
+  max-width: 960px;
+  font-size: clamp(4rem, 8.7vw, 9.8rem);
+}
+
+.rhyme-wave-content p:not(.upgrade-kicker) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rhyme-wave-status {
+  position: absolute;
+  right: 4vw;
+  bottom: 120px;
+  width: min(28vw, 260px);
+  min-width: 190px;
+  padding: 1rem;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 8px;
+  background: rgba(0,0,0,.38);
+  backdrop-filter: blur(12px);
+}
+
+.rhyme-wave-status strong {
+  display: block;
+  margin: .7rem 0 .25rem;
+  color: #fff;
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: .8;
+}
+
+.rhyme-wave-status small {
+  color: rgba(255,255,255,.6);
+  line-height: 1.45;
+}
+
+.rhyme-hero-prism {
+  place-items: center;
+  text-align: center;
+  background: #000;
+}
+
+.rhyme-webgl-shader {
+  opacity: .92;
+  filter: saturate(1.45) contrast(1.1);
+}
+
+.rhyme-prism-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(90deg, rgba(255,61,206,.16), transparent 22% 78%, rgba(25,247,255,.15)),
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: auto, 88px 88px, 88px 88px;
+  mask-image: radial-gradient(circle at 50% 48%, #000 0 42%, transparent 76%);
+}
+
+.rhyme-prism-object {
+  width: min(42vw, 540px);
+  min-width: 260px;
+  aspect-ratio: 1;
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.rhyme-prism-object img {
+  width: 58%;
+  border-radius: 50%;
+  filter:
+    drop-shadow(0 0 24px rgba(255,255,255,.72))
+    drop-shadow(0 0 46px rgba(255,61,206,.68))
+    drop-shadow(0 0 72px rgba(25,247,255,.5));
+  animation: rhymePrismLogoFloat 7s ease-in-out infinite;
+}
+
+.rhyme-prism-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 0 80px rgba(255,61,206,.22);
+  transform: translate(-50%, -50%);
+}
+
+.rhyme-prism-ring-one {
+  width: 70%;
+  aspect-ratio: 1;
+  border-color: rgba(255,61,206,.36);
+  animation: pulseRingBreath 5.5s ease-in-out infinite;
+}
+
+.rhyme-prism-ring-two {
+  width: 94%;
+  aspect-ratio: 1.12;
+  border-color: rgba(25,247,255,.3);
+  animation: pulseRingRotate 13s linear infinite;
+}
+
+.rhyme-prism-ring-three {
+  width: 120%;
+  aspect-ratio: 1.22;
+  border-color: rgba(255,243,109,.22);
+  animation: pulseRingRotate 18s linear reverse infinite;
+}
+
+.rhyme-prism-content {
+  width: min(100%, 980px);
+  display: grid;
+  justify-items: center;
+  padding-top: 34vh;
+}
+
+.rhyme-prism-content h1 {
+  max-width: 1040px;
+  font-size: clamp(3.6rem, 8.1vw, 9.2rem);
+}
+
+.rhyme-prism-content p:not(.upgrade-kicker) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes rhymeAuroraSweep {
+  0% { transform: translate3d(-8vw, -2vh, 0) scaleX(.94); }
+  100% { transform: translate3d(9vw, 5vh, 0) scaleX(1.08); }
+}
+
+@keyframes rhymeWaveFloat {
+  0% { transform: translateY(20px) rotate(-5deg); }
+  100% { transform: translateY(-18px) rotate(4deg); }
+}
+
+@keyframes rhymePrismLogoFloat {
+  0%, 100% { transform: translateY(0) rotate(-3deg) scale(.98); }
+  50% { transform: translateY(-18px) rotate(4deg) scale(1.04); }
 }
 
 .upgrade-studio {
@@ -1298,6 +1695,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   }
 
   .studio-hero,
+  .rhyme-hero-aurora,
   .pulse-hero,
   .circle-hero,
   .pulse-sessions,
@@ -1309,8 +1707,25 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   }
 
   .studio-stage,
+  .rhyme-aurora-panel,
   .circle-media {
     min-height: 54vh;
+  }
+
+  .rhyme-hero-switch {
+    padding-top: 104px;
+  }
+
+  .rhyme-wave-status {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: min(100%, 360px);
+    margin-top: 2rem;
+  }
+
+  .rhyme-prism-content {
+    padding-top: 42vh;
   }
 
   .studio-rooms,
@@ -1357,9 +1772,16 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   }
 
   .studio-hero,
+  .rhyme-hero-switch,
   .pulse-hero,
   .circle-hero {
     padding: 96px 5vw 170px;
+  }
+
+  .rhyme-hero-switch h1,
+  .rhyme-wave-content h1,
+  .rhyme-prism-content h1 {
+    font-size: clamp(3.2rem, 14vw, 5.6rem);
   }
 
   .studio-copy h1,
@@ -1390,6 +1812,19 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
 
   .pulse-logo-stage img {
     width: min(74%, 340px);
+  }
+
+  .rhyme-prism-object {
+    top: 38%;
+    width: min(88vw, 360px);
+  }
+
+  .rhyme-prism-content {
+    padding-top: 50vh;
+  }
+
+  .rhyme-wave-status {
+    min-width: 0;
   }
 
   .circle-media {

@@ -1,7 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import { RhymeHeroShader } from "./RhymeHeroShaders";
 import { RhymeScrollEffects } from "./RhymeScrollEffects";
+
+const heroVariants = [
+  { id: "aurora", label: "Aurora Blur", themeClass: "rhyme-theme-aurora" },
+  { id: "wave", label: "Shader Animation", themeClass: "rhyme-theme-wave" },
+  { id: "prism", label: "WebGL Shader", themeClass: "rhyme-theme-prism", recommended: true },
+] as const;
+
+type HeroVariantId = (typeof heroVariants)[number]["id"];
 
 const sessions = [
   {
@@ -43,9 +53,113 @@ const faq = [
   ["Is the app mobile only?", "The goal is phone and PC access, so listeners can stream casually and still join deeper learning sessions when they want a bigger screen."],
 ];
 
-export function RhymeVariantShowcase() {
+function HeroVariant({ activeVariant }: { activeVariant: HeroVariantId }) {
+  if (activeVariant === "wave") {
+    return (
+      <section className="rhyme-hero-switch rhyme-hero-wave" aria-labelledby="rhyme-hero-title">
+        <RhymeHeroShader kind="ripple" className="rhyme-ripple-shader" />
+        <div className="rhyme-wave-field" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </div>
+        <div className="rhyme-wave-content">
+          <p className="upgrade-kicker">Selected creator rooms are opening</p>
+          <h1 id="rhyme-hero-title">Stream. Learn. Connect.</h1>
+          <p>
+            RHYME turns music into a closer exchange: press play, study the craft,
+            then step into intimate sessions with artists, DJs, producers, and
+            teachers who can see the room.
+          </p>
+          <div className="upgrade-actions">
+            <Link className="upgrade-primary" href="/reserve">
+              Reserve your username <b>+</b>
+            </Link>
+            <Link className="upgrade-secondary" href="/reserve?type=creator">
+              Join as a creator
+            </Link>
+          </div>
+        </div>
+        <div className="rhyme-wave-status" aria-label="RHYME launch status">
+          <span>Live room signal</span>
+          <strong>24</strong>
+          <small>selected fans per premium beat lab</small>
+        </div>
+      </section>
+    );
+  }
+
+  if (activeVariant === "prism") {
+    return (
+      <section className="rhyme-hero-switch rhyme-hero-prism" aria-labelledby="rhyme-hero-title">
+        <RhymeHeroShader kind="wave" className="rhyme-webgl-shader" />
+        <div className="rhyme-prism-grid" aria-hidden="true" />
+        <div className="rhyme-prism-object" aria-hidden="true">
+          <span className="rhyme-prism-ring rhyme-prism-ring-one" />
+          <span className="rhyme-prism-ring rhyme-prism-ring-two" />
+          <span className="rhyme-prism-ring rhyme-prism-ring-three" />
+          <img src="/media/rhyme-prism-clef.png" alt="" />
+        </div>
+        <div className="rhyme-prism-content">
+          <p className="upgrade-kicker">A music home with a visible mark</p>
+          <h1 id="rhyme-hero-title">Build your music circle.</h1>
+          <p>
+            More than streaming, this direction gives RHYME one memorable mark
+            at the center of the motion, glow, and launch energy.
+          </p>
+          <div className="upgrade-actions">
+            <Link className="upgrade-primary" href="/reserve">
+              Reserve your username <b>+</b>
+            </Link>
+            <Link className="upgrade-secondary" href="/reserve?type=creator">
+              Open creator access
+            </Link>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <main className="upgrade-page upgrade-pulse pulse-home">
+    <section className="rhyme-hero-switch rhyme-hero-aurora" aria-labelledby="rhyme-hero-title">
+      <div className="rhyme-aurora-field" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+        <i />
+      </div>
+      <div className="rhyme-aurora-content">
+        <p className="upgrade-kicker">Streaming plus music school plus fan rooms</p>
+        <h1 id="rhyme-hero-title">More than streaming.</h1>
+        <p>
+          RHYME is where listening turns into learning. Stream songs from artists
+          you love, then move into small live rooms where the people behind the
+          sound teach, create, and connect.
+        </p>
+        <div className="upgrade-actions">
+          <Link className="upgrade-primary" href="/reserve">
+            Reserve your username <b>+</b>
+          </Link>
+          <Link className="upgrade-secondary" href="/reserve?type=creator">
+            Join as a creator
+          </Link>
+        </div>
+      </div>
+      <div className="rhyme-aurora-panel" aria-label="RHYME product preview">
+        <span>Now forming</span>
+        <strong>Beat lab</strong>
+        <p>Creator-led sessions with streaming, teaching, and selected live calls.</p>
+      </div>
+    </section>
+  );
+}
+
+export function RhymeVariantShowcase() {
+  const [activeVariant, setActiveVariant] = useState<HeroVariantId>("prism");
+  const activeTheme = heroVariants.find((variant) => variant.id === activeVariant) ?? heroVariants[0];
+
+  return (
+    <main className={`upgrade-page upgrade-pulse pulse-home rhyme-theme-page ${activeTheme.themeClass}`}>
       <RhymeScrollEffects />
       <div className="upgrade-grain" aria-hidden="true" />
 
@@ -60,49 +174,23 @@ export function RhymeVariantShowcase() {
         </Link>
       </nav>
 
-      <section className="pulse-hero pulse-home-hero">
-        <div className="pulse-copy" data-reveal>
-          <p className="upgrade-kicker">Streaming plus music school plus fan rooms</p>
-          <h1>More than streaming.</h1>
-          <p>
-            RHYME is a music app for people who do more than press play. Stream
-            songs from artists you love, then step into limited live sessions
-            where artists, DJs, producers, teachers, and talented music lovers
-            teach, create, and connect with their followers.
-          </p>
-          <div className="upgrade-actions">
-            <Link className="upgrade-primary" href="/reserve">
-              Reserve your username <b>+</b>
-            </Link>
-            <Link className="upgrade-secondary" href="/reserve?type=creator">
-              Join as a creator
-            </Link>
-          </div>
-        </div>
-        <div className="pulse-board pulse-home-board" aria-label="RHYME app preview">
-          <article className="pulse-logo-stage" aria-label="Animated RHYME logo aura">
-            <div className="pulse-aura-ring pulse-aura-ring-one" aria-hidden="true" />
-            <div className="pulse-aura-ring pulse-aura-ring-two" aria-hidden="true" />
-            <div className="pulse-aura-ring pulse-aura-ring-three" aria-hidden="true" />
-            <img src="/media/rhyme-prism-clef.png" alt="RHYME prism logo" />
-            <span>Live soon</span>
-            <h2>Beat session opens to 24 fans</h2>
-          </article>
-          <article>
-            <span>App model</span>
-            <strong>3-in-1</strong>
-            <p>Streaming, learning sessions, and closer fan connection in one place.</p>
-          </article>
-          <article>
-            <span>Creator access</span>
-            <p>Verified accounts can host premium rooms with a small join fee.</p>
-          </article>
-          <article>
-            <span>Fan experience</span>
-            <p>Follow artists, stream music, learn skills, and join selected live calls.</p>
-          </article>
-        </div>
-      </section>
+      <HeroVariant activeVariant={activeVariant} />
+
+      <div className="upgrade-switcher" aria-label="Hero theme selector">
+        {heroVariants.map((variant, index) => (
+          <button
+            key={variant.id}
+            type="button"
+            className={variant.id === activeVariant ? "is-active" : undefined}
+            onClick={() => setActiveVariant(variant.id)}
+            aria-pressed={variant.id === activeVariant}
+          >
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            {variant.label}
+            {"recommended" in variant && variant.recommended ? <b>Best fit</b> : null}
+          </button>
+        ))}
+      </div>
 
       <section className="pulse-product" data-reveal>
         <div>
