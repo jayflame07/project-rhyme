@@ -80,8 +80,11 @@ export function RhymeVariantShowcase() {
           </div>
         </div>
         <div className="pulse-board pulse-home-board" aria-label="RHYME app preview">
-          <article className="pulse-now">
-            <video src="/media/rhyme-4.mp4" autoPlay muted loop playsInline />
+          <article className="pulse-logo-stage" aria-label="Animated RHYME logo aura">
+            <div className="pulse-aura-ring pulse-aura-ring-one" aria-hidden="true" />
+            <div className="pulse-aura-ring pulse-aura-ring-two" aria-hidden="true" />
+            <div className="pulse-aura-ring pulse-aura-ring-three" aria-hidden="true" />
+            <img src="/media/rhyme-prism-clef.png" alt="RHYME prism logo" />
             <span>Live soon</span>
             <h2>Beat session opens to 24 fans</h2>
           </article>
