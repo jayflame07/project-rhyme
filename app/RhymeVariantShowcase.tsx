@@ -98,14 +98,13 @@ function HeroVariant({ activeVariant }: { activeVariant: HeroVariantId }) {
           <span className="rhyme-prism-ring rhyme-prism-ring-one" />
           <span className="rhyme-prism-ring rhyme-prism-ring-two" />
           <span className="rhyme-prism-ring rhyme-prism-ring-three" />
-          <img src="/media/rhyme-prism-clef.png" alt="" />
         </div>
         <div className="rhyme-prism-content">
-          <p className="upgrade-kicker">A music home with a visible mark</p>
+          <p className="upgrade-kicker">A music home built around motion</p>
           <h1 id="rhyme-hero-title">Build your music circle.</h1>
           <p>
-            More than streaming, this direction gives RHYME one memorable mark
-            at the center of the motion, glow, and launch energy.
+            More than streaming, this direction gives RHYME a full WebGL-style
+            stage for live rooms, creator lessons, fan circles, and launch energy.
           </p>
           <div className="upgrade-actions">
             <Link className="upgrade-primary" href="/reserve">
