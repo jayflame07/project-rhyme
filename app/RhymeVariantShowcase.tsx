@@ -93,12 +93,6 @@ function HeroVariant({ activeVariant }: { activeVariant: HeroVariantId }) {
     return (
       <section className="rhyme-hero-switch rhyme-hero-prism" aria-labelledby="rhyme-hero-title">
         <RhymeHeroShader kind="wave" className="rhyme-webgl-shader" />
-        <div className="rhyme-prism-grid" aria-hidden="true" />
-        <div className="rhyme-prism-object" aria-hidden="true">
-          <span className="rhyme-prism-ring rhyme-prism-ring-one" />
-          <span className="rhyme-prism-ring rhyme-prism-ring-two" />
-          <span className="rhyme-prism-ring rhyme-prism-ring-three" />
-        </div>
         <div className="rhyme-prism-content">
           <p className="upgrade-kicker">A music home built around motion</p>
           <h1 id="rhyme-hero-title">Build your music circle.</h1>
