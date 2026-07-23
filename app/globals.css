@@ -11,6 +11,9 @@
   --pink: #ff6fb7;
   --line: rgba(255,255,255,.16);
   --display: "Arial Nova", "Helvetica Neue", Arial, sans-serif;
+  --font-21st-body: var(--font-instrument-sans), "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-21st-display: var(--font-archivo-black), "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --font-21st-editorial: var(--font-bodoni-moda), "Bodoni 72", Didot, "Times New Roman", serif;
   --editorial: "Bodoni 72", Didot, "Times New Roman", serif;
 }
 
@@ -1765,11 +1768,14 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
     radial-gradient(circle at 34% 30%, rgba(41,100,255,.24), transparent 24%),
     linear-gradient(135deg, rgba(255,0,200,.16), transparent 34%),
     #050509;
+  font-family: var(--font-21st-body);
 }
 
 .rhyme-21st-copy-stage h2 {
   max-width: 980px;
   margin: 0;
+  font-family: var(--font-21st-display);
+  font-weight: 400;
   font-size: clamp(3.1rem, 6.8vw, 8rem);
   line-height: .9;
 }
@@ -1877,6 +1883,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
 .rhyme-21st-flip-text {
   white-space: nowrap;
   text-align: center;
+  font-family: var(--font-21st-display);
   font-weight: 900;
   letter-spacing: 0;
 }
@@ -1955,17 +1962,23 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
 
 .rhyme-21st-session-rotate,
 .rhyme-21st-card-rotate {
+  font-family: var(--font-21st-display);
+  font-weight: 400;
   color: var(--variant-accent);
   text-shadow: 0 0 34px rgba(255,0,200,.36);
 }
 
 .rhyme-text-color-run {
+  font-family: var(--font-21st-display);
+  font-weight: 400;
   color: transparent;
   background: linear-gradient(90deg, #f6f6f6, #ff005d 34%, #e5489a 68%, #f6f6f6);
   background-clip: text;
 }
 
 .rhyme-reveal-title {
+  font-family: var(--font-21st-display);
+  font-weight: 400;
   color: #fff;
   text-shadow:
     -2px 0 rgba(0,229,255,.38),
