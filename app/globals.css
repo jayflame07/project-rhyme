@@ -1751,3 +1751,270 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
     animation: none;
   }
 }
+
+/* 21st.dev text effects used below the selected hero. */
+.rhyme-21st-copy-stage {
+  min-height: 74vh;
+  padding: 7rem 4vw;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 5vw;
+  align-items: center;
+  border-top: 1px solid rgba(255,255,255,.14);
+  background:
+    radial-gradient(circle at 34% 30%, rgba(41,100,255,.24), transparent 24%),
+    linear-gradient(135deg, rgba(255,0,200,.16), transparent 34%),
+    #050509;
+}
+
+.rhyme-21st-copy-stage h2 {
+  max-width: 980px;
+  margin: 0;
+  font-size: clamp(3.1rem, 6.8vw, 8rem);
+  line-height: .9;
+}
+
+.rhyme-21st-copy-stage > p {
+  max-width: 620px;
+  color: rgba(255,255,255,.68);
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.rhyme-21st-flip-shell {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.rhyme-21st-flip-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  filter: blur(18px);
+  opacity: .8;
+}
+
+.rhyme-21st-flip-primary-glow {
+  background: rgba(36, 104, 255, .28);
+}
+
+.rhyme-21st-flip-neon-glow {
+  background: rgba(0, 229, 255, .26);
+}
+
+.rhyme-21st-flip-glass-glow {
+  background: rgba(255,255,255,.12);
+}
+
+.rhyme-21st-flip-gradient-glow {
+  background: linear-gradient(45deg, rgba(147,51,234,.3), rgba(219,39,119,.3), rgba(249,115,22,.3));
+}
+
+.rhyme-21st-flip {
+  position: relative;
+  padding: .12em .34em .18em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 16px;
+  transform: translateY(.08em);
+  backdrop-filter: blur(10px);
+}
+
+.rhyme-21st-flip-primary {
+  color: #fff;
+  border: 1px solid rgba(112,164,255,.58);
+  background: linear-gradient(135deg, #3b7bff, #0f5fff);
+  box-shadow: 0 22px 70px rgba(22,93,255,.28);
+}
+
+.rhyme-21st-flip-neon {
+  color: #85f9dc;
+  border: 1px solid rgba(0,229,255,.62);
+  background: #0b0d16;
+  box-shadow: 0 22px 70px rgba(0,229,255,.22);
+}
+
+.rhyme-21st-flip-glass {
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.1);
+  box-shadow: 0 22px 70px rgba(0,0,0,.24);
+}
+
+.rhyme-21st-flip-gradient {
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.22);
+  background: linear-gradient(90deg, #7c3aed, #db2777, #f97316);
+  box-shadow: 0 22px 70px rgba(147,51,234,.25);
+}
+
+.rhyme-21st-flip-shimmer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.rhyme-21st-flip-shimmer div {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
+  transform: skewX(-20deg);
+}
+
+.rhyme-21st-flip-text-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.rhyme-21st-flip-text {
+  white-space: nowrap;
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.rhyme-21st-flip-text span {
+  display: inline-block;
+}
+
+.rhyme-21st-inline-flip {
+  font-size: .92em;
+}
+
+.rhyme-21st-inline-flip-text {
+  font-size: inherit;
+  line-height: .9;
+}
+
+.rhyme-21st-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: rgba(255,255,255,.32);
+}
+
+.rhyme-21st-corner-tl {
+  top: 9px;
+  left: 9px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+  border-top-left-radius: 8px;
+}
+
+.rhyme-21st-corner-tr {
+  top: 9px;
+  right: 9px;
+  border-top: 2px solid;
+  border-right: 2px solid;
+  border-top-right-radius: 8px;
+}
+
+.rhyme-21st-corner-bl {
+  bottom: 9px;
+  left: 9px;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  border-bottom-left-radius: 8px;
+}
+
+.rhyme-21st-corner-br {
+  right: 9px;
+  bottom: 9px;
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+  border-bottom-right-radius: 8px;
+}
+
+.rhyme-21st-rotate {
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  color: #fff;
+  vertical-align: baseline;
+}
+
+.rhyme-21st-rotate-placeholder {
+  visibility: hidden;
+}
+
+.rhyme-21st-rotate-word {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rhyme-21st-session-rotate,
+.rhyme-21st-card-rotate {
+  color: var(--variant-accent);
+  text-shadow: 0 0 34px rgba(255,0,200,.36);
+}
+
+.rhyme-text-color-run {
+  color: transparent;
+  background: linear-gradient(90deg, #f6f6f6, #ff005d 34%, #e5489a 68%, #f6f6f6);
+  background-clip: text;
+}
+
+.rhyme-reveal-title {
+  color: #fff;
+  text-shadow:
+    -2px 0 rgba(0,229,255,.38),
+    2px 0 rgba(255,0,200,.38),
+    0 0 34px rgba(255,255,255,.12);
+  transition: filter .28s ease, transform .28s ease, text-shadow .28s ease;
+}
+
+.rhyme-reveal-title:hover {
+  filter: contrast(1.12);
+  transform: translateY(-4px);
+  text-shadow:
+    -5px 0 rgba(0,229,255,.55),
+    5px 0 rgba(255,0,200,.55),
+    0 0 52px rgba(255,255,255,.18);
+}
+
+@media (max-width: 980px) {
+  .rhyme-21st-copy-stage {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .rhyme-21st-copy-stage {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  .rhyme-21st-copy-stage h2 {
+    font-size: clamp(3rem, 14vw, 5.2rem);
+  }
+
+  .rhyme-21st-inline-flip {
+    margin-top: .16em;
+    max-width: 100%;
+  }
+
+  .rhyme-21st-inline-flip-text {
+    font-size: .78em;
+  }
+
+  .rhyme-21st-flip {
+    border-radius: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rhyme-21st-flip-shimmer div {
+    animation: none;
+  }
+}

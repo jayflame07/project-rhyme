@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { ContainerTextFlip } from "@/components/ui/modern-animated-multi-words";
+import { Component as RotatingText } from "@/components/ui/rotating-text";
 import { RhymeHeroShader } from "./RhymeHeroShaders";
 import { RhymeScrollEffects } from "./RhymeScrollEffects";
 
@@ -90,7 +92,10 @@ export function RhymeVariantShowcase() {
       <section className="pulse-product" data-reveal>
         <div>
           <p className="upgrade-kicker">The product idea</p>
-          <h2>Spotify-like listening, with a school and stage built in.</h2>
+          <h2>
+            Spotify-like listening, with a school and{" "}
+            <span className="rhyme-text-color-run">stage</span> built in.
+          </h2>
         </div>
         <p>
           RHYME starts with music streaming, then adds the layer listeners do not
@@ -100,10 +105,41 @@ export function RhymeVariantShowcase() {
         </p>
       </section>
 
+      <section className="rhyme-21st-copy-stage" data-reveal>
+        <div>
+          <p className="upgrade-kicker">Creator access</p>
+          <h2>
+            Music rooms that feel{" "}
+            <ContainerTextFlip
+              words={["phenomenal", "personal", "electric", "close"]}
+              interval={2600}
+              animationDuration={650}
+              variant="primary"
+              className="rhyme-21st-inline-flip"
+              textClassName="rhyme-21st-inline-flip-text"
+            />
+          </h2>
+        </div>
+        <p>
+          RHYME makes streaming feel alive: the same page can hold songs, lessons,
+          creator sessions, paid fan access, and selected live calls where music
+          lovers can actually be seen.
+        </p>
+      </section>
+
       <section className="pulse-sessions" data-reveal>
         <div>
           <p className="upgrade-kicker">Exclusive live sessions</p>
-          <h2>Every session is a small room, not a crowded livestream.</h2>
+          <h2>
+            Every session is a small{" "}
+            <RotatingText
+              words={["room", "lesson", "studio", "circle"]}
+              mode="blur"
+              interval={2300}
+              className="rhyme-21st-session-rotate"
+            />
+            , not a crowded livestream.
+          </h2>
         </div>
         <div className="pulse-session-stack">
           {sessions.map((session) => (
@@ -119,14 +155,21 @@ export function RhymeVariantShowcase() {
 
       <section className="pulse-grid pulse-feature-grid" data-reveal>
         {[
-          ["Listeners", "Stream songs, follow creators, learn music skills, and get closer to the people behind the sound."],
-          ["Artists", "Release music, host intimate live calls, teach followers, and build a paying community."],
-          ["DJs", "Connect with fans, test sets, start trends, and bring selected listeners inside the room."],
-          ["Teachers", "Turn talent into mobile and PC sessions for guitar, production, vocals, songwriting, and more."],
-        ].map(([title, detail], index) => (
+          ["Listeners", "Stream songs, follow creators, learn music skills, and get closer to the people behind the sound.", "slide"],
+          ["Artists", "Release music, host intimate live calls, teach followers, and build a paying community.", "fade"],
+          ["DJs", "Connect with fans, test sets, start trends, and bring selected listeners inside the room.", "flip"],
+          ["Teachers", "Turn talent into mobile and PC sessions for guitar, production, vocals, songwriting, and more.", "drop"],
+        ].map(([title, detail, mode], index) => (
           <article key={title}>
             <span>0{index + 1}</span>
-            <h2>{title}</h2>
+            <h2>
+              <RotatingText
+                words={[title, title === "DJs" ? "Selectors" : "Creators"]}
+                mode={mode as "slide" | "fade" | "flip" | "drop"}
+                interval={2800 + index * 260}
+                className="rhyme-21st-card-rotate"
+              />
+            </h2>
             <p>{detail}</p>
           </article>
         ))}
@@ -198,7 +241,7 @@ export function RhymeVariantShowcase() {
       <section className="pulse-final" data-reveal>
         <img src="/media/rhyme-prism-clef.png" alt="RHYME prism clef" />
         <p className="upgrade-kicker">Private pre-launch / 2026</p>
-        <h2>Start with the name your fans will know.</h2>
+        <h2 className="rhyme-reveal-title">Start with the name your fans will know.</h2>
         <Link className="upgrade-primary" href="/reserve">
           Reserve your username <b>+</b>
         </Link>
