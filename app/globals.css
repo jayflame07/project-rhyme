@@ -8,7 +8,7 @@
   --muted: #aaa4b7;
   --cyan: #85f9dc;
   --violet: #b383ff;
-  --pink: #ff6fb7;
+  --pink: #ffffff;
   --line: rgba(255,255,255,.16);
   --display: "Arial Nova", "Helvetica Neue", Arial, sans-serif;
   --font-21st-body: var(--font-instrument-sans), "Inter", "Helvetica Neue", Arial, sans-serif;
@@ -532,8 +532,8 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
 }
 
 .rhyme-theme-page.rhyme-theme-prism {
-  --variant-accent: #ff3dce;
-  --variant-on-accent: #09010a;
+  --variant-accent: #ffffff;
+  --variant-on-accent: #050509;
 }
 
 .rhyme-hero-switch {
@@ -814,10 +814,10 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
 }
 
 .upgrade-pulse {
-  --variant-accent: #ff00c8;
+  --variant-accent: #ffffff;
   --variant-on-accent: #050006;
   background:
-    linear-gradient(130deg, rgba(255,0,200,.14), transparent 28%),
+    linear-gradient(130deg, rgba(255,255,255,.08), transparent 28%),
     linear-gradient(300deg, rgba(0,229,255,.13), transparent 26%),
     #030306;
 }
@@ -886,7 +886,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   align-items: flex-start;
   background:
     radial-gradient(circle at 50% 46%, rgba(255,255,255,.18), transparent 10%),
-    radial-gradient(circle at 48% 47%, rgba(255,0,200,.3), transparent 29%),
+    radial-gradient(circle at 48% 47%, rgba(255,255,255,.18), transparent 29%),
     radial-gradient(circle at 54% 52%, rgba(0,229,255,.22), transparent 34%),
     radial-gradient(circle at 46% 57%, rgba(255,230,0,.13), transparent 28%),
     #020103;
@@ -898,7 +898,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   inset: -26%;
   z-index: 0;
   background:
-    conic-gradient(from 0deg, transparent 0 12%, rgba(255,0,200,.48), transparent 26% 39%, rgba(0,229,255,.42), transparent 54% 67%, rgba(255,230,0,.38), transparent 82% 100%);
+    conic-gradient(from 0deg, transparent 0 12%, rgba(255,255,255,.42), transparent 26% 39%, rgba(0,229,255,.42), transparent 54% 67%, rgba(255,230,0,.28), transparent 82% 100%);
   filter: blur(32px);
   opacity: .82;
   animation: pulseAuroraSpin 18s linear infinite;
@@ -914,7 +914,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   border-radius: 50%;
   filter:
     drop-shadow(0 0 22px rgba(255,255,255,.52))
-    drop-shadow(0 0 44px rgba(255,0,200,.48))
+    drop-shadow(0 0 44px rgba(255,255,255,.32))
     drop-shadow(0 0 66px rgba(0,229,255,.28));
   animation: pulseLogoFloat 7s ease-in-out infinite;
 }
@@ -934,8 +934,8 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
 .pulse-aura-ring-one {
   width: 72%;
   aspect-ratio: 1;
-  background: radial-gradient(circle, rgba(255,0,200,.18), transparent 62%);
-  box-shadow: 0 0 58px rgba(255,0,200,.35);
+  background: radial-gradient(circle, rgba(255,255,255,.16), transparent 62%);
+  box-shadow: 0 0 58px rgba(255,255,255,.18);
   animation: pulseRingBreath 5.4s ease-in-out infinite;
 }
 
@@ -987,7 +987,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   align-items: start;
   border-top: 1px solid rgba(255,255,255,.14);
   background:
-    linear-gradient(180deg, rgba(255,0,200,.08), transparent 42%),
+    linear-gradient(180deg, rgba(255,255,255,.06), transparent 42%),
     #050509;
 }
 
@@ -1082,7 +1082,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   border: 1px solid rgba(255,255,255,.15);
   border-radius: 8px;
   background:
-    linear-gradient(145deg, rgba(255,0,200,.12), rgba(0,229,255,.05)),
+    linear-gradient(145deg, rgba(255,255,255,.08), rgba(0,229,255,.05)),
     rgba(255,255,255,.035);
 }
 
@@ -1469,10 +1469,10 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
 
 /* Final selected Pulse Grid homepage. */
 .pulse-home {
-  --variant-accent: #ff00c8;
-  --variant-on-accent: #070008;
+  --variant-accent: #ffffff;
+  --variant-on-accent: #050509;
   background:
-    linear-gradient(130deg, rgba(255,0,200,.14), transparent 28%),
+    linear-gradient(130deg, rgba(255,255,255,.08), transparent 28%),
     linear-gradient(300deg, rgba(0,229,255,.13), transparent 26%),
     linear-gradient(180deg, #030306, #08070b 48%, #030306);
 }
@@ -1498,7 +1498,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
 
 .pulse-home-board article:nth-child(2) {
   background:
-    linear-gradient(145deg, rgba(255,0,200,.18), rgba(255,230,0,.06)),
+    linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,230,0,.04)),
     rgba(255,255,255,.045);
 }
 
@@ -1541,7 +1541,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
 
 .pulse-feature-grid article:nth-child(2) {
   background:
-    linear-gradient(145deg, rgba(0,229,255,.12), rgba(255,0,200,.08)),
+    linear-gradient(145deg, rgba(0,229,255,.08), rgba(255,255,255,.08)),
     rgba(255,255,255,.045);
 }
 
@@ -1554,7 +1554,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
 .pulse-economy {
   grid-template-columns: 1fr 1fr;
   background:
-    linear-gradient(125deg, rgba(255,0,200,.12), transparent 38%),
+    linear-gradient(125deg, rgba(255,255,255,.08), transparent 38%),
     #09060d;
 }
 
@@ -1673,7 +1673,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   justify-content: center;
   text-align: center;
   background:
-    radial-gradient(circle at 50% 30%, rgba(255,0,200,.22), transparent 28%),
+    radial-gradient(circle at 50% 30%, rgba(255,255,255,.16), transparent 28%),
     linear-gradient(150deg, rgba(0,229,255,.12), transparent 38%),
     #030306;
 }
@@ -1683,7 +1683,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   min-width: 160px;
   margin-bottom: 2rem;
   border-radius: 8px;
-  box-shadow: 0 0 80px rgba(255,0,200,.26);
+  box-shadow: 0 0 80px rgba(255,255,255,.18);
 }
 
 .pulse-final h2 {
@@ -1766,7 +1766,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   border-top: 1px solid rgba(255,255,255,.14);
   background:
     radial-gradient(circle at 34% 30%, rgba(41,100,255,.24), transparent 24%),
-    linear-gradient(135deg, rgba(255,0,200,.16), transparent 34%),
+    linear-gradient(135deg, rgba(255,255,255,.1), transparent 34%),
     #050509;
   font-family: var(--font-21st-body);
 }
@@ -1804,7 +1804,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
 }
 
 .rhyme-21st-flip-primary-glow {
-  background: rgba(36, 104, 255, .28);
+  background: rgba(255,255,255,.24);
 }
 
 .rhyme-21st-flip-neon-glow {
@@ -1832,10 +1832,10 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
 }
 
 .rhyme-21st-flip-primary {
-  color: #fff;
-  border: 1px solid rgba(112,164,255,.58);
-  background: linear-gradient(135deg, #3b7bff, #0f5fff);
-  box-shadow: 0 22px 70px rgba(22,93,255,.28);
+  color: #050509;
+  border: 1px solid rgba(255,255,255,.82);
+  background: linear-gradient(135deg, #ffffff, #d9d9df);
+  box-shadow: 0 22px 70px rgba(255,255,255,.16);
 }
 
 .rhyme-21st-flip-neon {
@@ -1855,8 +1855,8 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
 .rhyme-21st-flip-gradient {
   color: #fff;
   border: 1px solid rgba(255,255,255,.22);
-  background: linear-gradient(90deg, #7c3aed, #db2777, #f97316);
-  box-shadow: 0 22px 70px rgba(147,51,234,.25);
+  background: linear-gradient(90deg, #ffffff, #d8d8de, #ffffff);
+  box-shadow: 0 22px 70px rgba(255,255,255,.16);
 }
 
 .rhyme-21st-flip-shimmer {
@@ -1965,14 +1965,14 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   font-family: var(--font-21st-display);
   font-weight: 400;
   color: var(--variant-accent);
-  text-shadow: 0 0 34px rgba(255,0,200,.36);
+  text-shadow: 0 0 34px rgba(255,255,255,.24);
 }
 
 .rhyme-text-color-run {
   font-family: var(--font-21st-display);
   font-weight: 400;
   color: transparent;
-  background: linear-gradient(90deg, #f6f6f6, #ff005d 34%, #e5489a 68%, #f6f6f6);
+  background: linear-gradient(90deg, #ffffff, #d8d8de 48%, #ffffff);
   background-clip: text;
 }
 
@@ -1982,7 +1982,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   color: #fff;
   text-shadow:
     -2px 0 rgba(0,229,255,.38),
-    2px 0 rgba(255,0,200,.38),
+    2px 0 rgba(255,255,255,.28),
     0 0 34px rgba(255,255,255,.12);
   transition: filter .28s ease, transform .28s ease, text-shadow .28s ease;
 }
@@ -1992,7 +1992,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   transform: translateY(-4px);
   text-shadow:
     -5px 0 rgba(0,229,255,.55),
-    5px 0 rgba(255,0,200,.55),
+    5px 0 rgba(255,255,255,.42),
     0 0 52px rgba(255,255,255,.18);
 }
 
