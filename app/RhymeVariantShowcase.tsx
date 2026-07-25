@@ -227,11 +227,26 @@ export function RhymeVariantShowcase() {
         </div>
       </section>
 
-      <section className="pulse-faq" data-reveal>
-        <div>
-          <p className="upgrade-kicker">Launch clarity</p>
-          <h2>What RHYME is becoming.</h2>
-        </div>
+      <section className="pulse-faq pulse-faq-lamp-section" data-reveal>
+        <LampContainer className="pulse-faq-lamp">
+          <motion.p
+            className="upgrade-kicker"
+            initial={{ opacity: 0.45, y: 34 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
+          >
+            Launch clarity
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0.5, y: 88 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
+          >
+            What RHYME <br /> is becoming.
+          </motion.h2>
+        </LampContainer>
         <div className="pulse-faq-list">
           {faq.map(([question, answer]) => (
             <details key={question}>
