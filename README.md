@@ -1,15 +1,37 @@
-# Rhyme Music
+# RHYME
 
-Rhyme is an artist-first music community: listeners can discover music, learn from creators, and join small live sessions with artists, DJs, and producers.
+RHYME is an artist-first music community for streaming, learning, and intimate live sessions with verified creators.
 
-## Launch site
+## Preview
 
-The landing page is available at: https://rhyme-music.ocanseyderrick07.chatgpt.site
+- Homepage: https://rhyme-design-studio.ocanseyderrick07.chatgpt.site
+- Username reservation: https://rhyme-design-studio.ocanseyderrick07.chatgpt.site/reserve
 
-## Sign-up
+The preview remains private and is configured not to appear in search engines.
 
-The site uses Supabase email/password sign-up and reserves a unique username in `public.profiles`. Run `supabase/username-reservations.sql` once in the Supabase SQL Editor before opening registration.
+## Local development
 
-## Local preview
+Requires Node.js 22.13 or newer.
 
-Open `index.html` in a browser for the standalone launch-page version.
+```bash
+npm install
+npm run dev
+```
+
+Useful checks:
+
+```bash
+npm test
+npm run lint
+```
+
+## Username reservations
+
+The reservation experience is intentionally inactive until Supabase is connected. Before enabling it in production:
+
+1. Create the Supabase project and run `supabase/username-reservations.sql` in the SQL Editor.
+2. Configure the Supabase URL and anonymous key.
+3. Add the published URL to Supabase Authentication settings.
+4. Configure production email delivery.
+
+No username is secured until this setup is complete and a visitor confirms their email.
