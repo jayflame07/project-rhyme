@@ -29,51 +29,24 @@ const sessions = [
   },
 ];
 
-const steps = [
-  ["Stream", "Listen to songs from various artists with the everyday ease people expect from a modern music app."],
-  ["Learn", "Join creator-led sessions to learn music skills: guitar, production, DJing, songwriting, and more."],
-  ["Connect", "Enter limited live rooms where artists can see and speak with selected fans, not just broadcast at them."],
-];
-
 const fanBentoCards = [
   {
-    kicker: "Live room",
-    title: "Fans are not just watching. They are in the room.",
-    detail: "Selected followers can join the call, ask real questions, and feel the artist reacting to them directly.",
-    className: "is-large is-photo",
-    image: "/media/rhyme-session-learn.png",
+    title: "Instant live alerts",
+    detail: "Fans know the moment a verified artist goes live and can jump straight into the room.",
+    className: "is-large",
+    image: "/media/rhyme-bento-live-alert.png",
   },
   {
-    kicker: "Seen",
-    title: "Face-to-face access",
-    detail: "Artists can see who is present, choose who comes on, and keep the session personal.",
-    className: "is-tall",
+    title: "Upcoming lessons",
+    detail: "Creators can schedule guitar, production, and music sessions so followers can plan to join.",
+    className: "is-wide",
+    image: "/media/rhyme-bento-upcoming-lesson.png",
   },
   {
-    kicker: "Trend room",
-    title: "DJs bring fans into the drop.",
-    detail: "A set can become a shared moment where fans react, request, and help push the next sound.",
-    className: "is-photo",
-    image: "/media/rhyme-session-watch.png",
-  },
-  {
-    kicker: "Signal",
-    title: "Live reactions",
-    detail: "Hearts, comments, and questions move with the room instead of disappearing into a public feed.",
-    className: "is-status",
-  },
-  {
-    kicker: "Creator pay",
-    title: "Small paid rooms",
-    detail: "Verified creators can charge a light access fee for premium sessions and still earn from the platform.",
-    className: "is-stat",
-  },
-  {
-    kicker: "Beat lab",
-    title: "Fans watch the process, not only the release.",
-    detail: "Producers can open up drums, samples, mix choices, and the messy middle behind the record.",
-    className: "is-wide is-photo",
-    image: "/media/rhyme-session-dj.png",
+    title: "Connect now",
+    detail: "DJ rooms make it easy for fans to enter before the live moment moves on.",
+    className: "is-wide",
+    image: "/media/rhyme-bento-connect-now.png",
   },
 ];
 
@@ -175,54 +148,14 @@ export function RhymeVariantShowcase() {
         </div>
       </section>
 
-      <section className="rhyme-fan-bento" data-reveal>
-        <LampContainer className="rhyme-fan-lamp">
-          <motion.p
-            className="upgrade-kicker"
-            initial={{ opacity: 0.45, y: 36 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
-          >
-            Connecting with fans
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0.5, y: 92 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-          >
-            Build rooms <br /> fans remember.
-          </motion.h2>
-        </LampContainer>
-
+      <section className="rhyme-fan-bento rhyme-fan-bento-images" data-reveal>
         <div className="rhyme-bento-grid">
-          {fanBentoCards.map((card, index) => (
+          {fanBentoCards.map((card) => (
             <article className={card.className} key={card.title}>
-              {card.image ? <img src={card.image} alt="" /> : null}
-              <span>{String(index + 1).padStart(2, "0")} / {card.kicker}</span>
+              <img src={card.image} alt="" />
               <h3>{card.title}</h3>
               <p>{card.detail}</p>
-              {card.className.includes("is-status") ? (
-                <div className="rhyme-bento-reactions" aria-hidden="true">
-                  <i>Live</i>
-                  <b>1.2k</b>
-                  <b>875</b>
-                </div>
-              ) : null}
-              {card.className.includes("is-stat") ? (
-                <strong>3-in-1</strong>
-              ) : null}
             </article>
-          ))}
-        </div>
-
-        <div className="rhyme-bento-path" aria-label="RHYME path">
-          {steps.map(([title, detail]) => (
-            <div key={title}>
-              <h3>{title}</h3>
-              <p>{detail}</p>
-            </div>
           ))}
         </div>
       </section>
