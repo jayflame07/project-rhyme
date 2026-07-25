@@ -33,12 +33,6 @@ const steps = [
   ["Connect", "Enter limited live rooms where artists can see and speak with selected fans, not just broadcast at them."],
 ];
 
-const creatorPaths = [
-  ["Paid sessions", "Verified artists, DJs, producers, and teachers can charge a small fee for premium live rooms."],
-  ["Subscription share", "RHYME can pay creators from platform subscriptions as their audience streams, learns, and returns."],
-  ["Fan growth", "Creator pages become a home for songs, sessions, teaching, live calls, and trend-building."],
-];
-
 const faq = [
   ["Is RHYME only for famous artists?", "No. RHYME is for established artists, DJs, producers, music teachers, and talented music lovers who can teach or create music-related sessions."],
   ["How are live rooms different from going live?", "Rooms are intentionally limited. The creator can see selected people in the live call, answer questions, and make the session feel closer than a public livestream."],
@@ -88,22 +82,6 @@ export function RhymeVariantShowcase() {
       </nav>
 
       <HeroVariant />
-
-      <section className="pulse-product" data-reveal>
-        <div>
-          <p className="upgrade-kicker">The product idea</p>
-          <h2>
-            Spotify-like listening, with a school and{" "}
-            <span className="rhyme-text-color-run">stage</span> built in.
-          </h2>
-        </div>
-        <p>
-          RHYME starts with music streaming, then adds the layer listeners do not
-          get from normal platforms: direct access to how music is made. A fan can
-          listen to a track, join a guitar lesson from the artist, watch a producer
-          build a beat, or enter a DJ room that helps create the next trend.
-        </p>
-      </section>
 
       <section className="rhyme-21st-copy-stage" data-reveal>
         <div>
@@ -183,44 +161,6 @@ export function RhymeVariantShowcase() {
             <p>{detail}</p>
           </div>
         ))}
-      </section>
-
-      <section className="pulse-economy" data-reveal>
-        <div>
-          <p className="upgrade-kicker">Two ways to earn</p>
-          <h2>Creators get paid by the room and by the platform.</h2>
-          <p>
-            RHYME can work with a subscription like Spotify, while verified
-            creators can also charge small fees for special live sessions. That
-            gives creators a reason to teach, show up, and build stronger fan
-            relationships.
-          </p>
-          <Link className="upgrade-primary" href="/reserve?type=creator">
-            Reserve a creator name <b>+</b>
-          </Link>
-        </div>
-        <div className="pulse-earning-list">
-          {creatorPaths.map(([title, detail], index) => (
-            <article key={title}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <h3>{title}</h3>
-              <p>{detail}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="pulse-access" data-reveal>
-        <video src="/media/rhyme-2.mp4" autoPlay muted loop playsInline />
-        <div>
-          <p className="upgrade-kicker">Verified creator rooms</p>
-          <h2>Small enough for the artist to actually see who is there.</h2>
-          <p>
-            Public livestreams can feel distant. RHYME rooms are designed for
-            selected fans, paid access when appropriate, and real interaction:
-            questions, feedback, learning, and face-to-face presence.
-          </p>
-        </div>
       </section>
 
       <section className="pulse-faq" data-reveal>
