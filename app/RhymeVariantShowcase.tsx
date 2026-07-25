@@ -17,13 +17,13 @@ const sessions = [
     label: "Beat lab",
     title: "Watch a beat become a record.",
     detail: "Producers can break down drums, samples, arrangements, and mix choices while followers ask questions in real time.",
-    image: "/media/rhyme-session-watch.png",
+    image: "/media/rhyme-session-dj.png",
   },
   {
     label: "DJ trend room",
     title: "DJs can turn taste into movement.",
     detail: "DJs can connect with fans, test transitions, build trends, and invite a selected room into the energy behind a set.",
-    image: "/media/rhyme-session-dj.png",
+    image: "/media/rhyme-session-watch.png",
   },
 ];
 
