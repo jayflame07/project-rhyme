@@ -1019,12 +1019,14 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   background: #08070b;
 }
 
+.pulse-session-stack img,
 .pulse-session-stack video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   opacity: .56;
   filter: saturate(1.45) hue-rotate(48deg) contrast(1.12);
 }

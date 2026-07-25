@@ -11,19 +11,19 @@ const sessions = [
     label: "Guitar room",
     title: "Learn the song from the person who plays it.",
     detail: "Artists and talented music lovers can host small teaching sessions for guitar, vocals, writing, and live performance.",
-    video: "/media/rhyme-1.mp4",
+    image: "/media/rhyme-session-learn.png",
   },
   {
     label: "Beat lab",
     title: "Watch a beat become a record.",
     detail: "Producers can break down drums, samples, arrangements, and mix choices while followers ask questions in real time.",
-    video: "/media/rhyme-2.mp4",
+    image: "/media/rhyme-session-watch.png",
   },
   {
     label: "DJ trend room",
     title: "DJs can turn taste into movement.",
     detail: "DJs can connect with fans, test transitions, build trends, and invite a selected room into the energy behind a set.",
-    video: "/media/rhyme-3.mp4",
+    image: "/media/rhyme-session-dj.png",
   },
 ];
 
@@ -122,7 +122,7 @@ export function RhymeVariantShowcase() {
         <div className="pulse-session-stack">
           {sessions.map((session) => (
             <article key={session.title}>
-              <video src={session.video} autoPlay muted loop playsInline />
+              <img src={session.image} alt="" />
               <span>{session.label}</span>
               <h3>{session.title}</h3>
               <p>{session.detail}</p>
