@@ -45,7 +45,7 @@ const reserveVariations = [
     accent: "music identity.",
     copy: "A warmer creator-school direction for guitar lessons, producer sessions, and the people who want to teach music on RHYME.",
     proof: ["Lessons", "Sessions", "Followers"],
-    image: "/media/rhyme-bento-upcoming-lesson.png",
+    image: "/media/rhyme-prism-clef-transparent.png",
   },
   {
     id: "mono",
@@ -60,7 +60,7 @@ const reserveVariations = [
 ];
 
 export function ReserveShowcase({ initialIntent }: { initialIntent: JoinIntent }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(3);
   const active = reserveVariations[activeIndex];
 
   return (

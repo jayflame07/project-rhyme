@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo_Black, Bodoni_Moda, Instrument_Sans } from "next/font/google";
+import { Archivo_Black, Bodoni_Moda, Fredoka, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 
 const title = "RHYME \u2014 Stream. Learn. Connect.";
@@ -24,6 +24,12 @@ const bodoniModa = Bodoni_Moda({
   display: "swap",
 });
 
+const fredoka = Fredoka({
+  subsets: ["latin"],
+  variable: "--font-fredoka",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title,
   description,
@@ -41,7 +47,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${instrumentSans.variable} ${archivoBlack.variable} ${bodoniModa.variable}`}>
+      <body className={`${instrumentSans.variable} ${archivoBlack.variable} ${bodoniModa.variable} ${fredoka.variable}`}>
         {children}
       </body>
     </html>

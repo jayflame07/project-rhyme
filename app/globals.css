@@ -219,6 +219,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   --reserve-panel: rgba(9,8,20,.82);
   --reserve-line: rgba(255,255,255,.18);
   --reserve-muted: rgba(255,255,255,.62);
+  --reserve-font: var(--font-fredoka), var(--font-instrument-sans), "Inter", "Helvetica Neue", Arial, sans-serif;
   min-height: 100svh;
   position: relative;
   isolation: isolate;
@@ -228,6 +229,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
     radial-gradient(circle at 74% 34%, rgba(255,58,187,.14), transparent 28%),
     #050510;
   color: #fffaf2;
+  font-family: var(--reserve-font);
 }
 
 .reserve-variant-noise {
@@ -317,6 +319,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   line-height: .82;
   letter-spacing: 0;
   text-transform: uppercase;
+  font-family: var(--font-21st-display);
 }
 
 .reserve-variant-copy h1 em {
@@ -325,7 +328,7 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   color: transparent;
   background: linear-gradient(100deg, var(--reserve-accent), #aebcff 46%, var(--reserve-accent-2));
   background-clip: text;
-  font-family: var(--editorial);
+  font-family: var(--font-21st-editorial);
   font-weight: 500;
   line-height: .9;
   text-transform: none;
@@ -450,6 +453,8 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
   display: flex;
   align-items: center;
   border-radius: 8px;
+  font-family: var(--reserve-font);
+  font-weight: 500;
 }
 
 .reserve-variant-page .reserve-form fieldset label.selected {
@@ -463,6 +468,8 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
 
 .reserve-variant-page .reserve-submit {
   border-color: var(--reserve-accent);
+  font-family: var(--reserve-font);
+  font-weight: 600;
 }
 
 .reserve-variant-page .reserve-submit b {
@@ -547,6 +554,18 @@ footer small { grid-column: 1 / -1; align-self: end; color: #6b6573; font-size: 
     radial-gradient(circle at 68% 16%, rgba(255,176,95,.18), transparent 28%),
     radial-gradient(circle at 18% 52%, rgba(139,85,255,.2), transparent 30%),
     #090711;
+}
+
+.reserve-lesson .reserve-variant-media {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(139,85,255,.28), transparent 38%),
+    linear-gradient(180deg, rgba(255,176,95,.14), rgba(8,6,15,.92));
+}
+
+.reserve-lesson .reserve-variant-media img {
+  object-fit: contain;
+  padding: 15%;
+  filter: drop-shadow(0 22px 55px rgba(139,85,255,.38)) drop-shadow(0 0 36px rgba(255,176,95,.26));
 }
 
 .reserve-mono {
