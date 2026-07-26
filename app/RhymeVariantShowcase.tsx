@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { LampContainer } from "@/components/ui/lamp";
 import { ContainerTextFlip } from "@/components/ui/modern-animated-multi-words";
@@ -89,7 +90,7 @@ export function RhymeVariantShowcase() {
 
       <nav className="upgrade-nav pulse-home-nav" aria-label="RHYME">
         <Link className="upgrade-wordmark" href="/">
-          <img src="/media/rhyme-prism-clef.png" alt="" />
+          <Image src="/media/rhyme-prism-clef.png" alt="" width={28} height={28} />
           RHYME
         </Link>
         <span>{"Stream \u00b7 Learn \u00b7 Connect"}</span>
@@ -139,7 +140,7 @@ export function RhymeVariantShowcase() {
         <div className="pulse-session-stack">
           {sessions.map((session) => (
             <article key={session.title}>
-              <img src={session.image} alt="" />
+              <Image src={session.image} alt="" fill sizes="(min-width: 981px) 54vw, 100vw" />
               <span>{session.label}</span>
               <h3>{session.title}</h3>
               <p>{session.detail}</p>
@@ -152,7 +153,7 @@ export function RhymeVariantShowcase() {
         <div className="rhyme-bento-grid">
           {fanBentoCards.map((card) => (
             <article className={card.className} key={card.title}>
-              <img src={card.image} alt="" />
+              <Image src={card.image} alt="" fill sizes="(min-width: 981px) 31vw, 100vw" />
               <h3>{card.title}</h3>
               <p>{card.detail}</p>
             </article>
@@ -191,7 +192,7 @@ export function RhymeVariantShowcase() {
       </section>
 
       <section className="pulse-final" data-reveal>
-        <img src="/media/rhyme-prism-clef.png" alt="RHYME prism clef" />
+        <Image src="/media/rhyme-prism-clef.png" alt="RHYME prism clef" width={1024} height={1024} />
         <p className="upgrade-kicker">Private pre-launch / 2026</p>
         <h2 className="rhyme-reveal-title">Start with the name your fans will know.</h2>
         <Link className="upgrade-primary" href="/reserve">
